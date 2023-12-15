@@ -106,7 +106,7 @@ function App() {
         </label>
         <label className="w-full flex justify-center">
           <input
-            value={prompt}
+            value={apiKey}
             className="border-solid p-2 w-[50%] border-[2px] border-sky-400"
             placeholder="Введите api key"
             onChange={(e) => setAPiKey(e.target.value)}
