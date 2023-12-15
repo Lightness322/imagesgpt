@@ -5,7 +5,7 @@ import Progress from "./Progress"
 let reader = new FileReader()
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 })
 
