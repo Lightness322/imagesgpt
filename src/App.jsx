@@ -4,17 +4,17 @@ import Progress from "./Progress"
 
 let reader = new FileReader()
 
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-})
-
 function App() {
   const [images, setImages] = useState([])
   const [answers, setAnswers] = useState([])
   const [prompt, setPrompt] = useState("")
+  const [apiKey, setAPiKey] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  const openai = new OpenAI({
+    apiKey: `${apiKey}`,
+    dangerouslyAllowBrowser: true,
+  })
   function readFile(e) {
     let file = e.target.files[0]
 
@@ -104,6 +104,14 @@ function App() {
             onChange={(e) => setPrompt(e.target.value)}
           />
         </label>
+        <label className="w-full flex justify-center">
+          <input
+            value={prompt}
+            className="border-solid p-2 w-[50%] border-[2px] border-sky-400"
+            placeholder="Введите api key"
+            onChange={(e) => setAPiKey(e.target.value)}
+          />
+        </label>
         <label>
           <input
             ref={ref}
@@ -138,6 +146,7 @@ function App() {
               setAnswers([])
               setImages([])
               setPrompt("")
+              setAPiKey("")
             }}
           >
             Сброс
